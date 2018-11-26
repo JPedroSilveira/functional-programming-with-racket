@@ -34,7 +34,7 @@
          [else (pegar-elemento i (rest l))])))
   (make-Pessoa (implode (pegar-elemento 0 ls))
                (string->number (implode (pegar-elemento 1 ls)))
-               (implode (pegar-elemento 2 ls))))) 
+               (implode (pegar-elemento 2 ls)))))
 
 (check-expect (csv-para-pessoa (gera-csv teste)) teste)
 

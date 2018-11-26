@@ -1,0 +1,29 @@
+;; Um NúmeroOUerro é
+;; 	1. um elemento de Número, ou
+;; 	2. um elemento de Erro
+
+;; Uma Lista-de-números é
+;; 	- empty, ou
+;; 	- (cons n ldn), onde
+;; 		n : Número
+;; 		ldn : Lista-de-números
+
+(define-struct posn (x y))
+;;Um elemento posn de Posn é uma estrutura
+;;(make-posn coord-x coord-y), onde
+;;	coord-x : Número é a coordenada no eixo x do ponto
+;;	coord-y : Número é a coordenada no eixo y do ponto
+
+
+;; no-critério : (Número Número -> Booleano) Lista-de-números Número -> Lista-de-números
+;; A partir da lista dada, gera uma lista com os valores
+;; dentro de um critério em relação a um dado valor
+(define (no-critério op ldn valor)
+	(cond
+		[(empty? ldn) empty]
+		[(op (first ldn) valor)
+			(cons (first ldn) (no-critério op (rest ldn) valor))]
+		[else (no-critério op (rest ldn) valor)]))
+
+
+(foldr * 2 (map * (filter maior-que-cinco  (list 1 2 3 4 5 6 7)) (filter maior-que-cinco  (list 1 2 3 4 5 6 7)))) 
